@@ -1,0 +1,859 @@
+/*
+=============== 
+Fonts
+===============
+*/
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700&display=swap');
+
+/*
+=============== 
+Variables
+===============
+*/
+
+:root {
+	/* dark shades of primary color*/
+	--clr-primary-1: hsl(216, 99%, 37%);
+	--clr-primary-2: hsl(216, 99%, 43%);
+	--clr-primary-3: hsl(216, 99%, 50%);
+	--clr-primary-4: hsl(216, 99%, 57%);
+	/* primary/main color */
+	--clr-primary-5: hsl(216, 99%, 63%);
+	/* lighter shades of primary color */
+	--clr-primary-6: hsl(216, 99%, 70%);
+	--clr-primary-7: hsl(216, 98%, 77%);
+	--clr-primary-8: hsl(216, 100%, 83%);
+	--clr-primary-9: hsl(215, 100%, 90%);
+	--clr-primary-10: hsl(215, 100%, 97%);
+	/* darkest grey - used for headings */
+	--clr-grey-1: hsl(209, 61%, 16%);
+	--clr-grey-2: hsl(211, 39%, 23%);
+	--clr-grey-3: hsl(209, 34%, 30%);
+	--clr-grey-4: hsl(209, 28%, 39%);
+	/* grey used for paragraphs */
+	--clr-grey-5: hsl(210, 22%, 49%);
+	--clr-grey-6: hsl(209, 23%, 60%);
+	--clr-grey-7: hsl(211, 27%, 70%);
+	--clr-grey-8: hsl(210, 31%, 80%);
+	--clr-grey-9: hsl(212, 33%, 89%);
+	--clr-grey-10: hsl(210, 36%, 96%);
+	--clr-white: #fff;
+	--ff-primary: 'Lato', sans-serif;
+	--transition: all 0.3s linear;
+	--spacing: 0.1rem;
+	--radius: 0.5rem;
+	--light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+	--dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+/*
+=============== 
+Global Styles
+===============
+*/
+/* css reset */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+/* div{
+	border: 2px solid red;
+} */
+/* section{
+	border: 2px solid blue;
+} */
+/* article{
+	border: 2px solid green;
+} */
+body {
+	font-family: var(--ff-primary);
+	background: var(--clr-white);
+	color: var(--clr-grey-1);
+	line-height: 1.5;
+	font-size: 0.875rem;
+}
+ul {
+	list-style-type: none;
+}
+a {
+	text-decoration: none;
+}
+/* img {
+	width: 100%;
+	display: block;
+} */
+
+ /* this declaration can select all the images except for the images with a class of nav-logo */
+ /* for all the other images we're placing them in containers so we want them to be block elements, not inline, and take up the entire width of the container that holds them */
+img:not(.nav-logo) {
+  width: 100%;
+  display: block;
+}
+
+h1,
+h2,
+h3,
+h4 {
+	letter-spacing: var(--spacing);
+	text-transform: capitalize;
+	line-height: 1.25;
+	margin-bottom: 0.75rem;
+}
+h1 {
+	font-size: 3rem;
+}
+h2 {
+	font-size: 2rem;
+}
+h3 {
+	font-size: 1.25rem;
+}
+h4 {
+	font-size: 0.875rem;
+}
+p {
+	margin-bottom: 1.25rem;
+	color: var(--clr-grey-5);
+}
+@media screen and (min-width: 800px) {
+	h1 {
+		font-size: 4rem;
+	}
+	h2 {
+		font-size: 2.5rem;
+	}
+	h3 {
+		font-size: 1.75rem;
+	}
+	h4 {
+		font-size: 1rem;
+	}
+	body {
+		font-size: 1rem;
+	}
+	h1,
+	h2,
+	h3,
+	h4 {
+		line-height: 1;
+	}
+}
+/*  global classes */
+
+.btn {
+	text-transform: uppercase;
+	background: var(--clr-primary-5);
+	color: var(--clr-white);
+	padding: 0.375rem 0.75rem;
+	letter-spacing: var(--spacing);
+	display: inline-block;
+	/* font-weight: 700; */
+	-webkit-transition: var(--transition);
+	transition: var(--transition);
+	font-size: 0.875rem;
+	border: 2px solid transparent;
+	cursor: pointer;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+	border-radius: var(--radius);
+}
+.btn:hover {
+	color: var(--clr-primary-1);
+	background: var(--clr-primary-8);
+}
+
+/* sections */
+.section {
+	padding: 5rem 0;
+}
+.section-title {
+	text-align: center;
+	margin-bottom: 4rem;
+}
+.section-title h2 {
+	text-transform: uppercase;
+}
+.section-title span {
+	color: var(--clr-primary-5);
+}
+.section-center {
+	width: 90vw;
+	margin: 0 auto;
+	max-width: 1170px;
+}
+
+@media screen and (min-width: 992px) {
+	.section-center {
+		width: 95vw;
+	}
+}
+
+/*
+=============== 
+Navbar
+===============
+*/
+
+/* the 'navbar' is a container that holds the logo, links and social media icons */
+.navbar{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background: var(--clr-white);
+	box-shadow: var(--dark-shadow);
+	z-index: 10;
+	/* border: 2px solid red; */
+}
+
+/* we don't want to show the social media links on a smaller screen, so we'll start with display: none to 'hide' them */
+.nav-icons {
+	display: none;
+}
+
+/* this nav-center container sits with the navbar container and has a max-width of 1170px and it's container is 'centered' within the navbar container.  You'll note as the screen grows the content within the nav-center will 'shift away from the left and right sides of the screen' */
+.nav-center{
+	/* border: 2px solid blue; */
+	width: 100%;
+	max-width: 1170px;
+	margin: 0 auto;
+}
+
+.nav-header{
+	/* border: 2px solid green; */
+	display: -webkit-box;
+	display: flex;
+	-webkit-box-pack: justify;
+	        justify-content: space-between;
+	-webkit-box-align: center;
+	        align-items: center;
+	padding: 1rem 2rem;
+}
+
+.nav-toggle{
+	background: transparent;
+	border: transparent;
+	font-size: 1.5rem;
+	color: var(--clr-primary-5);
+	cursor: pointer;
+	-webkit-transition: var(--transition);
+	transition: var(--transition);
+}
+
+.nav-toggle:hover{
+	-webkit-transform: scale(1.2);
+	        transform: scale(1.2);
+}
+
+.nav-link{
+	display: block;
+	/* we used the same 2rem that we used in the nav-header */
+	padding: 1rem 2rem;
+	text-transform: capitalize;
+	letter-spacing: var(--spacing);
+	-webkit-transition: var(--transition);
+	transition: var(--transition);
+	color: var(--clr-grey-1);
+	cursor: pointer;
+	font-size: 1rem;
+}
+
+.nav-link:hover{
+	color: var(--clr-primary-1);
+	font-weight: 700;
+	background: var(--clr-primary-9);
+	padding-left: 2.5rem;
+}
+
+/* right now, on the small screen, the navbar remains open and takes up 1/2 the page, let's fix that by toggling */
+/* we start by looking for the height of the <ul> list items (the links), in our developer tools we look for the height of the nav-links container (it is 280 pixels) */
+/* so let's hide the nav-links class by default */
+
+.nav-links{
+	height: 0;
+	overflow: hidden;
+	-webkit-transition: var(--transition);
+	transition: var(--transition);
+}
+
+/* so when we press the 'toggle button' we want to add the class 'show-links' which will reverse the default values from above */
+/* with java script, when we click on the toggle button, the 'show-links' class is added to the nav-links container and the css rule below is enacted.  when we click again, or select a link, the show-links css declaration is removed (via the java script scroll-link smooth scroll functionality). */
+.show-links{
+	height: 280px;
+}
+
+
+/* at 992 pixels we'll do a bunch of overriding to remove the small screen defaults...and show the navbar and its links (including social icons) all the time */
+@media screen and (min-width: 992px){
+	.navbar{
+		padding: 1rem 2rem;
+	}
+	/* let's first hide our toggle button */
+	.nav-toggle{
+		display: none;
+	}
+	/* since the default setting is height: 0 and overflow: hidden we can't see our links, so we'll need to address that here */
+	/* we'll start with the nav-center */
+	.nav-center{
+		display: -webkit-box;
+		display: flex;
+		-webkit-box-pack: justify;
+		        justify-content: space-between;
+		-webkit-box-align: center;
+		        align-items: center;
+		flex-wrap: wrap;
+	}
+	/* this is now a child container of the parent nav-center container */
+	.nav-links{
+		height: auto;
+		display: -webkit-box;
+		display: flex;
+	}
+	/* we'll remove the default padding we have in the nav-header => padding: 1rem 2rem; and nav-link => padding: 1rem 2rem; */
+	.nav-header, .nav-link{
+		padding: 0 0;
+	}
+	/* and we need to address the hover on the nav-link as well */
+	.nav-link:hover{
+		background: transparent;
+		padding: 0 0;
+		color: var(--clr-primary-5);
+	}
+	/* we can also show our icons, which were originally defaulted to display: none */
+	.nav-icons{
+		display: -webkit-box;
+		display: flex;
+		-webkit-box-align: center;
+		        align-items: center;
+	}
+	.nav-icon{
+		margin-right: 0.7rem;
+		color: var(--clr-primary-5);
+		font-size: 1.2rem;
+		-webkit-transition: var(--transition);
+		transition: var(--transition);
+	}
+
+	.nav-icon:hover{
+		color: var(--clr-primary-8);
+	}
+	.nav-link{
+		margin-right: 2rem;
+	}
+}
+
+/*
+=============== 
+Hero
+===============
+*/
+
+.hero {
+	min-height: 100vh;
+	background: var(--clr-primary-5);
+	overflow: hidden;
+	display: -webkit-box;
+	display: flex;
+	-webkit-box-pack: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	        align-items: center;
+}
+
+.hero-banner {
+	text-align: center;
+	color: var(--clr-white);
+	padding: 0 3rem;
+}
+
+.hero-banner h1 {
+	text-transform: uppercase;
+}
+
+.hero-banner p {
+	max-width: 35rem;
+	/* since we already have a margin set up in global styles, we'll over-ride the properties to ensure our <p> sits in the middle - margin-left and right set to 'auto' will do this. */
+	margin-left: auto;
+	margin-right: auto;
+	color: var(--clr-white);
+	letter-spacing: var(--spacing);
+}
+
+.hero-banner .btn {
+	padding: 0.9rem 1.6rem;
+	font-size: 1.25rem;
+	background: transparent;
+	color: var(--clr-white);
+	border-color: var(--clr-white);
+}
+
+.hero-banner .btn:hover {
+	background: var(--clr-white);
+	color: var(--clr-primary-5);
+}
+
+@media screen and (min-width: 768px) {
+	.hero {
+		background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.3)), to(rgba(0, 0, 0, 0.3))),
+			url('../images/main-2.jpg') center/cover no-repeat;
+		background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+			url('../images/main-2.jpg') center/cover no-repeat;
+	}
+	.hero-banner {
+		padding: 0rem;
+	}
+	.hero-banner p {
+		max-width: 45rem;
+		margin-top: 1.5rem;
+		margin-bottom: 1.5rem;
+		font-size: 1.25rem;
+	}
+}
+/*
+=============== 
+About
+===============
+*/
+
+/* this section has a white background, so we leverage the standard white background to hold this section's contents */
+
+/* these are the two containers - the image and the information content */
+.about-info,
+.about-img {
+	margin-bottom: 2rem;
+}
+
+@media screen and (min-width: 992px) {
+	/* about-center is the flex-parent container */
+	.about-center {
+		display: -webkit-box;
+		display: flex;
+		-webkit-box-pack: justify;
+		        justify-content: space-between;
+		flex-wrap: wrap;
+	}
+	/* these are the children containers, and will shift into a two column layout when the screen get's larger */
+	.about-info,
+	.about-img {
+		/* padding: 1rem 0; */
+		-webkit-box-flex: 0;
+		        flex: 0 0 calc(50% - 2rem);
+		margin-bottom: 0;
+		align-self: center;
+	}
+}
+
+/* when the screen get's to the largest type screen we'll add a fancy 'border' frame that sits up and back from the image.  So we'll handle that using the ::before pseudo class...and make the image container 'position: relative' so that we can use position: absolute for the ::before pseudo class and border styling  */
+@media screen and (min-width: 1170px) {
+	.about-img {
+		position: relative;
+	}
+
+	.about-img::before {
+		content: '';
+		position: absolute;
+		border: 0.5rem solid var(--clr-primary-5);
+		width: 100%;
+		height: 100%;
+		box-sizing: border-box;
+		top: -1.5rem;
+		left: -1.5rem;
+		/* option to do this instead of about-photo: position: relative approach */
+		/* z-index: -1; */
+	}
+	/* we use this declaration to keep the photo 'on top' or 'closer' to the user and hide the border underneath it. */
+	.about-photo {
+		position: relative;
+	}
+}
+
+/*
+=============== 
+Services
+===============
+*/
+
+/* this is the entire services section container with a gray background to distinguish it from the previous section */
+.services {
+	background: var(--clr-grey-10);
+}
+
+/* this is the service card container itself and places the contents in the 'center' - which include the icon, title and text */
+.service {
+	text-align: center;
+	margin-bottom: 3rem;
+}
+/* we style the 'icon' container and turn it into an 'block like' element so we can add padding */
+.service-icon {
+	font-size: 2rem;
+	background: var(--clr-primary-5);
+	color: var(--clr-primary-1);
+	padding: 0.5rem;
+	display: inline-block;
+	margin-bottom: 1.5rem;
+}
+/* this is the <p> content and will have a max-width and text being centered */
+.service-text {
+	max-width: 20rem;
+	/* these two declarations keep the text in the center */
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* when we get to a larger screen we shift to a two-column layout with our services-center as the flex container parent and the service cards as the children */
+@media screen and (min-width: 576px) {
+	.services-center {
+		display: -webkit-box;
+		display: flex;
+		-webkit-box-pack: justify;
+		        justify-content: space-between;
+		flex-wrap: wrap;
+	}
+	.service {
+		-webkit-box-flex: 0;
+		        flex: 0 0 calc(50% - 1rem);
+		margin-bottom: 1.5rem;
+	}
+}
+
+/* when we get to a bit larger screen we turn from a two column layout to a three column layout.  We DO NOT need to adjust the services-center itself, since it is already set up as a flex container...we only need to adjust the styling for the service cards themselves */
+@media screen and (min-width: 992px) {
+	.service {
+		-webkit-box-flex: 0;
+		        flex: 0 0 calc(33.333% - 1rem);
+		margin-bottom: 0;
+	}
+}
+
+/* when we get to the larger screen we turn our service card container into a parent flex box container that holds the icon container and service info container as children */
+@media screen and (min-width: 1170px) {
+	/* this turns the service card container into a parent element */
+	.service {
+		display: -webkit-box;
+		display: flex;
+		text-align: left;
+	}
+	/* this is a child element, so we style it with a property that affects the child, not the parent.  The default is 'stretch' so the icon will stretch from the top to the bottom, so we'll set it to 'start' so the icon will become a square (not a rectangle) */
+	.service-icon {
+		align-self: start;
+	}
+	.service-info {
+		padding-left: 1rem;
+	}
+	.service-title {
+		margin-bottom: 0.5rem;
+	}
+}
+
+/*
+=============== 
+Featured Tours
+===============
+*/
+
+/* this is the entire featured tours section container with a white background to distinguish it from the previous section */
+
+.tour-card {
+	-webkit-transition: var(--transition);
+	transition: var(--transition);
+	background: var(--clr-grey-10);
+	box-shadow: var(--light-shadow);
+	margin-bottom: 2rem;
+	border-radius: var(--radius);
+}
+
+.tour-card:hover {
+	box-shadow: var(--dark-shadow);
+	-webkit-transform: scale(1.02);
+	        transform: scale(1.02);
+}
+.tour-img-container {
+	position: relative;
+}
+.tour-img {
+	height: 15rem;
+	-o-object-fit: cover;
+	   object-fit: cover;
+	border-top-right-radius: var(--radius);
+	border-top-left-radius: var(--radius);
+}
+.tour-date {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	background: var(--clr-primary-8);
+	margin-bottom: 0;
+	color: var(--clr-primary-1);
+	text-transform: capitalize;
+	padding: 0.25rem 0.5rem;
+}
+.tour-info {
+	padding: 1.25rem 1.5rem;
+}
+.tour-title-line {
+	display: -webkit-box;
+	display: flex;
+	-webkit-box-pack: justify;
+	        justify-content: space-between;
+	-webkit-box-align: baseline;
+	        align-items: baseline;
+	margin-bottom: 0rem;
+}
+.tour-title-line p {
+	color: var(--clr-grey-7);
+}
+
+.tour-footer {
+	display: -webkit-box;
+	display: flex;
+	-webkit-box-pack: justify;
+	        justify-content: space-between;
+	flex-wrap: wrap;
+	-webkit-box-align: center;
+	        align-items: center;
+}
+.tour-footer p {
+	line-height: 0;
+	margin-bottom: 0;
+	text-transform: capitalize;
+	color: var(--clr-primary-5);
+}
+
+/* align the 'button' (which is really a link) in the center using text-align.  Why can we do this? because <a> is NOT display block...it 'btn' is set to display: inline-block. */
+.tour-btn {
+	text-align: center;
+	margin-top: 1.5rem;
+}
+
+/* creating a two column layout */
+@media screen and (min-width: 768px) {
+	.featured-center {
+		display: -webkit-box;
+		display: flex;
+		flex-wrap: wrap;
+		-webkit-box-pack: justify;
+		        justify-content: space-between;
+	}
+
+	.tour-card {
+		-webkit-box-flex: 0;
+		        flex: 0 0 calc(50% - 2rem);
+	}
+}
+/* creating a three column layout */
+@media screen and (min-width: 1170px) {
+	.tour-card {
+		-webkit-box-flex: 0;
+		        flex: 0 0 calc(33.333% - 2rem);
+	}
+}
+
+/*
+=============== 
+Contact
+===============
+*/
+
+.contact {
+	background: var(--clr-primary-5);
+}
+.contact-title {
+	color: var(--clr-white);
+}
+.contact-title p {
+	color: var(--clr-primary-8);
+}
+.contact-title p::first-letter {
+	text-transform: uppercase;
+}
+.contact-form {
+	display: -webkit-box;
+	display: flex;
+	max-width: 28rem;
+}
+.form-control {
+	-webkit-box-flex: 1;
+	        flex: 1 1 auto;
+	color: var(--clr-grey-5);
+}
+.form-control,
+.btn-submit {
+	padding: 0.375rem 0.75rem;
+	font-size: 1rem;
+	line-height: 1.5rem;
+	font-weight: 300;
+	letter-spacing: var(--spacing);
+	background: var(--clr-white);
+	/* text-transform: capitalize; */
+	border: transparent;
+}
+
+.form-control::-webkit-input-placeholder {
+	color: inherit;
+}
+
+.form-control::-moz-placeholder {
+	color: inherit;
+}
+
+.form-control:-ms-input-placeholder {
+	color: inherit;
+}
+
+.form-control::-ms-input-placeholder {
+	color: inherit;
+}
+
+.form-control::placeholder {
+	color: inherit;
+}
+
+.btn-submit {
+	font-family: var(--ff-primary);
+	margin-left: 0.5rem;
+	background: var(--clr-primary-8);
+	color: var(--clr-primary-1);
+	cursor: pointer;
+	-webkit-transition: var(--transition);
+	transition: var(--transition);
+}
+
+.btn-submit:hover {
+	background: var(--clr-primary-1);
+	color: var(--clr-primary-9);
+}
+
+@media screen and (min-width: 992px) {
+	.contact-center {
+		display: -webkit-box;
+		display: flex;
+		flex-wrap: wrap;
+		-webkit-box-pack: justify;
+		        justify-content: space-between;
+	}
+	.contact-form {
+		align-self: flex-start;
+		-webkit-box-flex: 1;
+		        flex: 1 1 auto;
+		max-width: 100%;
+		padding-left: 2rem;
+	}
+}
+
+/*
+=============== 
+Gallery
+===============
+*/
+
+.gallery-img-container {
+	position: relative;
+	background: var(--clr-primary-5);
+}
+.gallery-icon {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	font-size: 3rem;
+	-webkit-transform: translate(-50%, -50%);
+	        transform: translate(-50%, -50%);
+	color: var(--clr-white);
+	opacity: 0;
+	cursor: pointer;
+	-webkit-transition: var(--transition);
+	transition: var(--transition);
+}
+.gallery-img {
+	height: 17rem;
+	-o-object-fit: cover;
+	   object-fit: cover;
+	-webkit-transition: var(--transition);
+	transition: var(--transition);
+}
+.gallery-img-container:hover .gallery-img {
+	opacity: 0.9;
+	-webkit-transform: scale(1.02);
+	        transform: scale(1.02);
+}
+.gallery-img-container:hover .gallery-icon {
+	opacity: 1;
+}
+
+@media screen and (min-width: 768px) {
+	.gallery-center {
+		display: -webkit-box;
+		display: flex;
+		flex-wrap: wrap;
+	}
+	.gallery-img-container {
+		-webkit-box-flex: 0;
+		        flex: 0 0 50%;
+	}
+}
+@media screen and (min-width: 992px) {
+	.gallery-img-container {
+		-webkit-box-flex: 0;
+		        flex: 0 0 33.333%;
+	}
+}
+@media screen and (min-width: 1170px) {
+	.gallery-img-container {
+		-webkit-box-flex: 0;
+		        flex: 0 0 25%;
+	}
+}
+
+/*
+=============== 
+Footer
+===============
+*/
+
+.footer {
+	background: var(--clr-primary-1);
+	text-align: center;
+	padding-left: 2rem;
+	padding-right: 2rem;
+}
+
+.footer-links,
+.footer-icons {
+	display: -webkit-box;
+	display: flex;
+	-webkit-box-pack: center;
+	        justify-content: center;
+	margin-bottom: 1.5rem;
+	flex-wrap: wrap;
+}
+
+.footer-link {
+	color: var(--clr-white);
+	text-transform: capitalize;
+	font-size: 1rem;
+	margin-right: 1rem;
+	letter-spacing: var(--spacing);
+	-webkit-transition: var(--transition);
+	transition: var(--transition);
+}
+
+.footer-link:hover {
+	color: var(--clr-primary-5);
+}
+
+.footer-icon {
+	color: var(--clr-white);
+	font-size: 1.5rem;
+	margin-right: 1.5rem;
+	-webkit-transition: var(--transition);
+	transition: var(--transition);
+}
+
+.footer-icon:hover {
+	color: var(--clr-primary-5);
+}
+
+.copyright{
+	color: var(--clr-grey-7);
+	text-transform: capitalize;
+	letter-spacing: var(--spacing);
+	margin-top: 4rem;
+}
